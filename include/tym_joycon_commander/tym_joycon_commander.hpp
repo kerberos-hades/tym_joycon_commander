@@ -54,6 +54,5 @@ private:
 
 public:
     JoyConCommander(int argc, char *argv[]);
-    ~JoyConCommander();
     void mainLoop();
 };

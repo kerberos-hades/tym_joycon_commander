@@ -129,7 +129,7 @@ JoyConCommander::JoyConCommander(int argc, char *argv[])
     /*Publisher,Subscriberの初期化*/
     ros::NodeHandle nh;
     pub_cmd_vel = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1000, this);
-    sub_joy_con = nh.subscribe("/joy", 10, joyConCallback, this);
+    sub_joy_con = nh.subscribe("/joy", 10, &JoyConCommander::joyConCallback, this);
 }
 /**
  * @brief メインループ
