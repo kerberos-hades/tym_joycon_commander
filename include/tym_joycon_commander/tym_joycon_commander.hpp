@@ -14,12 +14,14 @@ private:
     /*Switch JoyConのボタン配置*/
     enum SWITCH_BUTTON
     {
-        DOWN = 1, //押されている
-        UP = 0,   //押されてない
-        L2 = 6,   //並進速度減速
-        L1 = 4,   //並進速度加速
-        R2 = 7,   //角速度減速
-        R1 = 5    //角速度加速
+        DOWN = 1,    //押されている
+        UP = 0,      //押されてない
+        L2 = 6,      //並進速度減速
+        L1 = 4,      //並進速度加速
+        R2 = 7,      //角速度減速
+        R1 = 5,      //角速度加速
+        STICK_L = 1, //左スティック
+        STICK_R = 2  //右スティック
     };
 
     /*パラメータ定数*/
@@ -44,6 +46,7 @@ private:
     /*内部処理*/
     void joyConCallback(const sensor_msgs::JoyConstPtr &msg);
     double clip(double min, double arg, double max);
+    double stepDecimalNum(double arg, const double step);
     double setVelFromJoyCon(const sensor_msgs::JoyConstPtr &joy_con_msg);
     double setAngFromJoyCon(const sensor_msgs::JoyConstPtr &joy_con_msg);
     void publish(void);
@@ -53,5 +56,4 @@ public:
     JoyConCommander(int argc, char *argv[]);
     ~JoyConCommander();
     void mainLoop();
-    
 };
